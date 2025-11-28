@@ -3,20 +3,22 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-import SvgSprite from './Components/SvgSprite/svgSprite'
-import Wrapper from './Components/Wrapper/Wrapper'
 
+import SvgSprite from './Components/SvgSprite/SvgSprite'
+import Wrapper from './Components/Wrapper/Wrapper'
+import Footer from './Components/Footer/Footer'
 
 
 
 function App() {
-  const [count, setCount] = useState(0)
+ 
 
   return (
     <>
     <SvgSprite/>
       <Wrapper/>
-      
+     
+      <Footer/>
 
     </>
   )

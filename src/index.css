@@ -46,5 +46,5 @@
 }
  
 body{
-  @apply  font-AlanSans font-medium bg-rose-300
+  @apply  font-AlanSans font-medium bg-rose-100 
 }
