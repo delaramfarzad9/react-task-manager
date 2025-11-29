@@ -3,7 +3,7 @@ import React from 'react'
 export default function Footer() {
   return (
     
-           <footer className=" text-gray-600 text-sm p-4 flex flex-col md:flex-row justify-between items-center border-t">
+           <footer className="bg-gradient-to-t from-sky-100 to-blue-50/50  text-gray-600 text-sm p-4 flex flex-col md:flex-row justify-between items-center ">
       <span>© 2025 My Task Manager</span>
       <span className="italic">“Stay organized, stay creative.”</span>
       <div className="flex gap-4">
