@@ -18,8 +18,8 @@ const[title,setTitle]=useState("");
   <Svg svgId='close' />
 </button>
                {/* inputs */}
-        <input value={title} onChange={(e)=>setTitle(e.target.value)} type="text" className='w-96 h-10 border p-4 border-blue-500 rounded-xl shadow focus:placeholder-gray-300 placeholder-blue-600 ' placeholder='New Task...' />
-         <textarea value={description} onChange={(e)=>setDescription(e.target.value)} type="text" className=' w-96 h-40 border p-4 border-blue-500 rounded-xl shadow focus:placeholder-gray-300 placeholder-blue-600 ' placeholder='Description...' />
+        <input value={title} onChange={(e)=>setTitle(e.target.value)} type="text" className='w-96 h-10 border p-4 border-blue-500 rounded-xl shadow focus:placeholder-gray-300 placeholder-blue-600/50 ' placeholder='New Task...' />
+         <textarea value={description} onChange={(e)=>setDescription(e.target.value)} type="text" className=' w-96 h-40 border p-4 border-blue-500 rounded-xl shadow focus:placeholder-gray-300 placeholder-blue-600/50 ' placeholder='Description...' />
          {/* important checkbox */}
           <div className="flex flex-row-reverse self-start justify-center items-center gap-1 ml-2">
       <span className="text-rose-600">important</span>

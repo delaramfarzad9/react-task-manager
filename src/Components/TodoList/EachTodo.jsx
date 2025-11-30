@@ -1,42 +1,69 @@
 import React from "react";
 import Svg from "../SvgSprite/Svg";
 
-
-export default function EachTodo({title,description,isImportant,isCompleted=false}) {
+export default function EachTodo({
+  id,
+  title,
+  description,
+  isImportant,
+  isCompleted = false,
+  onDo,
+  onToggleImportant,
+  onRemove,
+}) {
   return (
     <div
-      className="bg-blue-100  rounded-xl flex flex-row justify-between items-start p-2 shadow
+      className="mt-10 md:mt-0 grid grid-cols-7 bg-blue-100  rounded-xl  items-start justify-items-center p-2 shadow
 
      
      "
     >
       {/* ---task & description--- */}
-      <div className="flex flex-col gap-2">
-        <span className="p-2 font-bold text-gray-700">{title}</span>
-      <span className="p-2  text-gray-700 line-clamp-2">{description}</span>
+      <div className="col-span-3 gap-2 flex  flex-col justify-self-start text-left  w-full min-w-0 ">
+          <span
+    className={`p-2 font-bold text-gray-700 ${
+      isCompleted ? "line-through decoration-1 text-gray-500" : ""
+    }`}
+  >
+    {title}
+  </span>
+       
+        <span
+         className={`p-2 wrap-break-word overflow-hidden text-gray-700 line-clamp-2 ${isCompleted ? "text-gray-400 tracking-tighter italic " : ""}`}>{description}
+         </span>
       </div>
       {/* ---interactive icons---- */}
-      <div className="  flex flex-col gap-2 md:gap-3 justify-end  items-end p-2 pr-4">
-     
-     {/* completed & important  */}
-<div className="flex flex-row  gap-3 ">
-          {/* completed */}
-    {isCompleted && ( <div className="flex flex-row justify-center items-center gap-1">
-      <span className="text-cyan-500/50">completed</span>
-         <input type="checkbox" className="appearance-none w-4 h-4 border-2 rounded-full border-cyan-500 cursor-pointer checked:bg-cyan-600 checked:border-cyan-600" />
-     </div>)}
-     {/* important  */}
-        {isImportant && (<div className="flex items-center gap-1">
-  <Svg svgId="star" className="text-yellow-500" />
-  <span className="text-sm text-rose-600">Important</span>
-</div>)}
-</div>
-   {/* edit & delete */}
-     <div className="flex flex-row gap-1">
-         <Svg svgId="edit" className="text-orange-600 cursor-pointer" />
-        <Svg svgId="trash" className="text-rose-600 cursor-pointer" />
-     </div>
-      </div>
+
+      {/* important toggle star  */}
+      <Svg
+        svgId="star"
+        onClick={() => onToggleImportant(id)}
+        className={`cursor-pointer ${
+          isImportant ? "text-yellow-500" : "text-gray-400"
+        }`}
+      />
+
+      {/* edit part  */}
+      <Svg svgId="edit" className="text-orange-600 cursor-pointer " />
+
+      {/* completed toggle with only SVG */}
+      {/* completed toggle */}
+      {isCompleted ? (
+        <Svg
+          svgId="check"
+          onClick={() => onDo(id)}
+          className="cursor-pointer text-cyan-600"
+        />
+      ) : (
+        <Svg
+          svgId="close"
+          onClick={() => onDo(id)}
+          className="cursor-pointer text-gray-400"
+        />
+      )}
+
+      {/* delete part  */}
+      <Svg svgId="trash" onClick={()=> onRemove(id)} className="text-rose-600 cursor-pointer" />
     </div>
   );
 }
