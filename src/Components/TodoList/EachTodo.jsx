@@ -13,7 +13,7 @@ export default function EachTodo({
 }) {
   return (
     <div
-      className="mt-10 md:mt-0 grid grid-cols-7 bg-blue-100  rounded-xl  items-start justify-items-center p-2 shadow
+      className=" grid grid-cols-7 bg-blue-100  rounded-xl  items-start justify-items-center p-2  shadow
 
      
      "
@@ -38,13 +38,13 @@ export default function EachTodo({
       <Svg
         svgId="star"
         onClick={() => onToggleImportant(id)}
-        className={`cursor-pointer ${
+        className={`cursor-pointer mt-2 ${
           isImportant ? "text-yellow-500" : "text-gray-400"
         }`}
       />
 
       {/* edit part  */}
-      <Svg svgId="edit" className="text-orange-600 cursor-pointer " />
+      <Svg svgId="edit" className="text-orange-600 cursor-pointer mt-2 " />
 
       {/* completed toggle with only SVG */}
       {/* completed toggle */}
@@ -52,18 +52,18 @@ export default function EachTodo({
         <Svg
           svgId="check"
           onClick={() => onDo(id)}
-          className="cursor-pointer text-cyan-600"
+          className="cursor-pointer text-cyan-600 mt-2"
         />
       ) : (
         <Svg
           svgId="close"
           onClick={() => onDo(id)}
-          className="cursor-pointer text-gray-400"
+          className="cursor-pointer text-gray-400 mt-2"
         />
       )}
 
       {/* delete part  */}
-      <Svg svgId="trash" onClick={()=> onRemove(id)} className="text-rose-600 cursor-pointer" />
+      <Svg svgId="trash" onClick={()=> onRemove(id)} className="text-rose-600 cursor-pointer mt-2" />
     </div>
   );
 }
