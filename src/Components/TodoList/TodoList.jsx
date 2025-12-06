@@ -68,6 +68,16 @@ const filteredTodos = ()=>{
     if (filter === "all")  return todos;
   if (filter === "pending") 
     return todos.filter((todo) => !todo.isCompleted);}
+
+const noTasksMessage =
+  todos.length === 0
+    ? "No tasks yet — add your first one!"
+    : filter === "completed"
+    ? "No completed tasks yet"
+    : filter === "pending"
+    ? "No pending tasks yet"
+    : "No tasks yet";
+
   return (
     <>
     {isModalOpen && <AddnewTaskModal onClose={()=>{setIsModalOpen(false)}} addTodoHandler={addTodoHandler}/>}
@@ -88,7 +98,7 @@ const filteredTodos = ()=>{
         {/* button'S wrap */}
         
 <div className='flex flex-row justify-between items-center mb-5 d:mb-0'>
-        <DropDown filter={filter} setFilter={setFilter} />
+        <DropDown filter={filter} setFilter={setFilter} tasks={todos}/>
         
 <Button onClick={() => {setIsModalOpen(true)}} className="flex gap-4 bg-blue-500 text-gray-200" btnTask="Create New">
 <Svg svgId="add" className="text-yellow-300" />
@@ -96,32 +106,35 @@ const filteredTodos = ()=>{
 
 </div>
       
- {todos.length ? ( <>{/* Todo list*/}
-  {/* header row */}
-<div className="hidden md:grid grid-cols-7 items-center justify-items-center  gap-4 mb-1  pb-2 font-bold text-gray-500">
-  <div className="col-span-3 justify-self-start pl-3">Title</div>
-  <div className="">Importance</div>
-  <div className="pr-3">Edit</div>
-  <div className="pr-3">Completion</div>
-  <div className=" pr-5">Delete</div>
-</div>
-{/* All tasks */}
-<section className='flex flex-col gap-4'>
-{/*all tasks */}
+ {todos.length === 0 ? (
+  <NoTaskYet message="No tasks yet — add your first one!" />
+) : filteredTodos().length === 0 ? (
+  <NoTaskYet message={noTasksMessage} />
+) : (
+  <>
+    {/* Todo list */}
+    <div className="hidden md:grid grid-cols-7 items-center justify-items-center gap-4 mb-1 pb-2 font-bold text-gray-500">
+      <div className="col-span-3 justify-self-start pl-3">Title</div>
+      <div>Importance</div>
+      <div className="pr-3">Edit</div>
+      <div className="pr-3">Completion</div>
+      <div className="pr-5">Delete</div>
+    </div>
+
+    <section className="flex flex-col gap-4">
       <div className="flex flex-col gap-4">
-      {filteredTodos().map((todo)=>(
-<EachTodo key={todo.id} {...todo} onDo={completeTodoHandler} onToggleImportant={toggleImportantHandler} onRemove={confirmRemoveTodo}  />
-      ))}
-        
+        {filteredTodos().map((todo) => (
+          <EachTodo
+            key={todo.id}
+            {...todo}
+            onDo={completeTodoHandler}
+            onToggleImportant={toggleImportantHandler}
+            onRemove={confirmRemoveTodo}
+          />
+        ))}
       </div>
-{/* completed tasks  */}
-{todos.some((todo)=>todo.isCompleted) && (<div className='flex flex-col gap-4'>
- <p className='text-gray-500 font-bold pl-3'>Completed tasks</p>
-{todos.filter((todo)=>todo.isCompleted) .map((todo)=>(<EachTodo key={todo.id} {...todo} onDo={completeTodoHandler} onToggleImportant={toggleImportantHandler} onRemove={removeTodo}  />)) }
-</div>)}
-{/* completed tasks  ends*/}
-</section> </>) : (
-<NoTaskYet/>
+    </section>
+  </>
 )}
 
     </div></>
