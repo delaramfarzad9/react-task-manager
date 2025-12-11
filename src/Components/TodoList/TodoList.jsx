@@ -110,7 +110,7 @@ const noTasksMessage =
     <div className='flex flex-col w-full'>
         {/* button'S wrap */}
         
-<div className='flex flex-row justify-between items-center mb-5 d:mb-0'>
+<div className='flex flex-row  items-center mb-5 d:mb-0'>
         <DropDown filter={filter} setFilter={setFilter} tasks={todos}/>
         
 <Button onClick={() => {setIsModalOpen(true)}} className="flex gap-4 bg-blue-500 text-gray-200" btnTask="Create New">

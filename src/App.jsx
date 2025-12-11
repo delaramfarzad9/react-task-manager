@@ -17,7 +17,7 @@ function App() {
         {/* app title */}
       <header className="bg-linear-to-b from-sky-200 to-blue-50 shadow-blue-50 p-6 text-center">
         <h1 className="text-2xl md:text-3xl font-bold text-blue-800">
-          My Task Manager
+          Dela Task Manager
         </h1>
         <p className="text-gray-500 italic">Stay organized, stay creative</p>
       </header>
