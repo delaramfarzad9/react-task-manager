@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import Button from './Button'
 import EachTodo from './EachTodo'
 import DropDown from '../DropDown/DropDown'
@@ -14,6 +14,12 @@ export default function TodoList() {
     const[todos,setTodos]=useState([]);
     const [validationMessage, setValidationMessage] = useState("");
     const [filter, setFilter] = useState("all"); // all, completed, pending
+    useEffect(()=>{
+      const localTodos=localStorage.getItem("todos");
+if (localTodos){
+  setTodos(JSON.parse(localTodos));
+}
+    },[])
 
 
   const addTodoHandler=(title,description,isImportant)=>{
@@ -22,9 +28,10 @@ export default function TodoList() {
     setValidationMessage("Please enter a title before adding a task.");
     return; // stop here, don't add
   }
-const newTodo={id:crypto.randomUUID(),title,description,isImportant,completed:false};
+const newTodo={id:crypto.randomUUID(),title,description,isImportant,isCompleted: false };
 setTodos([...todos,newTodo]);
 setIsModalOpen(false);
+localStorage.setItem("todos",JSON.stringify([...todos,newTodo]));
   }
   const completeTodoHandler=(id)=>{
     const updatedTodos=todos.map((todo)=>{
@@ -32,6 +39,7 @@ setIsModalOpen(false);
         return { ...todo, isCompleted: !todo.isCompleted }; // toggle completed status
       }return todo;});
       setTodos(updatedTodos);
+      localStorage.setItem("todos",JSON.stringify(updatedTodos));
   }
   const toggleImportantHandler = (id) => {
   const updatedTodos = todos.map((todo) => {
@@ -41,6 +49,7 @@ setIsModalOpen(false);
     return todo;
   });
   setTodos(updatedTodos);
+  
 };
 const [todoToDelete, setTodoToDelete] = useState(null);
 
@@ -49,7 +58,9 @@ const confirmRemoveTodo = (id) => {
 };
 
 const handleConfirmDelete = () => {
-  setTodos(todos.filter((todo) => todo.id !== todoToDelete));
+ const updatedTodos = todos.filter((todo) => todo.id !== todoToDelete);
+  setTodos(updatedTodos);
+  localStorage.setItem("todos", JSON.stringify(updatedTodos));
   setTodoToDelete(null); // close modal
 };
 
@@ -61,7 +72,9 @@ const removeTodo=(id)=>{
 
 
 const updatedTodos=todos.filter((todo)=>todo.id !==id);
-setTodos(updatedTodos);};
+setTodos(updatedTodos);
+localStorage.setItem("todos",JSON.stringify(updatedTodos));};
+
 const filteredTodos = ()=>{
   if (filter === "completed") 
     return todos.filter((todo) => todo.isCompleted);
