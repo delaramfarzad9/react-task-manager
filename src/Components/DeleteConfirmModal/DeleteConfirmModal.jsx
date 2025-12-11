@@ -12,7 +12,7 @@ export default function DeleteConfirmModal({ onConfirm, onCancel }) {
         <div className="flex justify-end gap-4">
           <Button
             onClick={onCancel}
-            className="px-4 py-2 rounded bg-gray-200 text-gray-700 hover:bg-gray-300"
+            className="px-4 py-2 rounded bg-blue-500 text-gray-100 hover:bg-gray-300"
           >
             Cancel
           </Button>
