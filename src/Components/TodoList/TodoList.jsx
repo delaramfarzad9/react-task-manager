@@ -113,7 +113,7 @@ const noTasksMessage =
 <div className='flex flex-row justify-center md:justify-between items-center mb-5 d:mb-0'>
         <DropDown filter={filter} setFilter={setFilter} tasks={todos}/>
         
-<Button onClick={() => {setIsModalOpen(true)}} className="flex gap-4 bg-blue-500 text-gray-200" btnTask="Create New">
+<Button onClick={() => {setIsModalOpen(true)}} className="flex items-center gap-2 md:gap-4 bg-blue-500 text-gray-200 " btnTask="Create New">
 <Svg svgId="add" className="text-yellow-300" />
 </Button>
 
@@ -128,10 +128,10 @@ const noTasksMessage =
     {/* Todo list */}
     <div className=" grid grid-cols-7 items-center justify-items-center  md:gap-4 mb-1 pb-2 font-bold text-gray-500">
       <div className="text-sm md:text-base  col-span-3 justify-self-start pl-3">Title</div>
-      <div className='text-sm md:text-base pr-3'>Importance</div>
-      <div className="text-sm md:text-base md:pr-3">Edit</div>
-      <div className="text-sm md:text-base pr-3">Completion</div>
-      <div className="text-sm md:text-base md:pr-5 ">Delete</div>
+      <div className='text-xs md:text-base pr-3'>Importance</div>
+      <div className="text-xs md:text-base pr-3">Edit</div>
+      <div className="text-xs md:text-base pr-3">Completion</div>
+      <div className="text-xs md:text-base md:pr-5 ">Delete</div>
     </div>
 
     <section className="flex flex-col gap-4">

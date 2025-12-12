@@ -17,7 +17,7 @@ export default function DropDown({ filter, setFilter }) {
    
   return (
  <div className='relative inline-block text-left'>
-  <Button onClick={()=>setOpen(!open)} className="bg-blue-100 text-gray-600 flex flex-row items-center gap-4 " >
+  <Button onClick={()=>setOpen(!open)} className="bg-blue-100 text-gray-600 flex  items-center  gap-2 md:gap-4 " >
     <span>{currentLabel}</span>
     <Svg  className={`transform transition-transform duration-300 ${
             open ? "rotate-180" : "rotate-0"

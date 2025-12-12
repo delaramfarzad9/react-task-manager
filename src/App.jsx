@@ -11,7 +11,7 @@ function App() {
 
   return (
     
-    <div className="min-h-screen flex flex-col ">
+    <div className="h-screen flex flex-col ">
       <SvgSprite />
      
         {/* app title */}
