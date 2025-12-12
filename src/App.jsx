@@ -11,7 +11,7 @@ function App() {
 
   return (
     
-    <div className="h-screen flex flex-col ">
+    <div className="min-h-screen flex flex-col ">
       <SvgSprite />
      
         {/* app title */}
@@ -22,7 +22,7 @@ function App() {
         <p className="text-gray-500 italic">Stay organized, stay creative</p>
       </header>
       {/* main content */}
-      <main className="flex-1 max-w-3xl mx-auto w-full p-6">
+      <main className="flex-1 grow max-w-3xl mx-auto w-full p-6">
         <TodoList />
       </main>
 

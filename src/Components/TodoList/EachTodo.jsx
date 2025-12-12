@@ -56,7 +56,7 @@ export default function EachTodo({
         />
       ) : (
         <Svg
-          svgId="close"
+          svgId="check"
           onClick={() => onDo(id)}
           className="cursor-pointer text-gray-400 mt-2"
         />
