@@ -10,6 +10,7 @@ export default function EachTodo({
   onDo,
   onToggleImportant,
   onRemove,
+   onEdit,
 }) {
   return (
     <div
@@ -44,7 +45,7 @@ export default function EachTodo({
       />
 
       {/* edit part  */}
-      <Svg svgId="edit" className="text-orange-600 cursor-pointer mt-2 " />
+      <Svg svgId="edit" onClick={() => onEdit(id)} className="text-orange-600 cursor-pointer mt-2 " />
 
       {/* completed toggle with only SVG */}
       {/* completed toggle */}
@@ -52,6 +53,7 @@ export default function EachTodo({
         <Svg
           svgId="check"
           onClick={() => onDo(id)}
+          
           className="cursor-pointer text-cyan-600 mt-2"
         />
       ) : (

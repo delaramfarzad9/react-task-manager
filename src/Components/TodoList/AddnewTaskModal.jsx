@@ -1,17 +1,25 @@
 import React from 'react'
 import Button from './Button'
 import Svg from '../SvgSprite/Svg'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 
 export default function AddnewTaskModal({onClose,addTodoHandler}) {
 const[title,setTitle]=useState("");
  const [description,setDescription]=useState("");
  const[isImportant,setIsImportant]=useState(false);
-
+useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, [onClose]);
   return (
       
-            <div className=' fixed inset-0 z-50 backdrop-blur-sm flex items-center justify-center  '>
-           <div className=' relative flex flex-col gap-4 justify-center items-center bg-gray-100 pt-12 pb-6 px-6 rounded-xl shadow-xl border border-gray-300'>
+            <div onClick={onClose} className=' fixed inset-0 z-50 backdrop-blur-sm flex items-center justify-center  '>
+           <div onClick={(e) => e.stopPropagation()} className=' relative flex flex-col gap-4 justify-center items-center bg-gray-100 pt-12 pb-6 px-6 rounded-xl shadow-xl border border-gray-300'>
             {/* close icon */}
 <button onClick={onClose} aria-label="Close modal"
  className="absolute top-2 left-2  text-rose-600 hover:text-rose-800">

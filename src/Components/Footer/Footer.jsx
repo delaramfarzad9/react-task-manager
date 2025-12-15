@@ -8,7 +8,7 @@ export default function Footer() {
       <span className="italic">“Stay organized, stay creative.”</span>
       <div className="flex gap-4">
         <a href="https://github.com/delaramfarzad9/react-task-manager" className="hover:text-rose-500">GitHub</a>
-        <a href="https://yourportfolio.com" className="hover:text-rose-500">Portfolio</a>
+        {/* <a href="https://myportfolio.com" className="hover:text-rose-500">Portfolio</a> */}
       </div>
     </footer>
    

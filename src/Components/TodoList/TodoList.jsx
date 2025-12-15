@@ -8,12 +8,17 @@ import Svg from '../SvgSprite/Svg'
 import NoTaskYet from '../NoTaskYet/NoTaskYet'
 import DeleteConfirmModal from '../DeleteConfirmModal/DeleteConfirmModal'
 import ValidationModal from '../ValidationModal/ValidationModal'
+import EditTaskModal from './editModal'
+
 
 export default function TodoList() {
     const[isModalOpen,setIsModalOpen]=useState(false)
     const[todos,setTodos]=useState([]);
     const [validationMessage, setValidationMessage] = useState("");
     const [filter, setFilter] = useState("all"); // all, completed, pending
+    const [todoToEdit, setTodoToEdit] = useState(null);
+  
+
     useEffect(()=>{
       const localTodos=localStorage.getItem("todos");
 if (localTodos){
@@ -21,6 +26,13 @@ if (localTodos){
 }
     },[])
 
+const editTodoHandler = (id, newTitle, newDescription, newImportant) => {
+  const updatedTodos = todos.map((todo) =>
+    todo.id === id ? { ...todo, title: newTitle, description: newDescription,isImportant: newImportant } : todo
+  );
+  setTodos(updatedTodos);
+  localStorage.setItem("todos", JSON.stringify(updatedTodos));
+};
 
   const addTodoHandler=(title,description,isImportant)=>{
     // Trim to remove spaces in  input
@@ -65,7 +77,7 @@ const handleConfirmDelete = () => {
 };
 
 const handleCancelDelete = () => {
-  setTodoToDelete(null); // close modal
+  setTodoToDelete(null); 
 };
 
 const removeTodo=(id)=>{
@@ -143,13 +155,22 @@ const noTasksMessage =
             onDo={completeTodoHandler}
             onToggleImportant={toggleImportantHandler}
             onRemove={confirmRemoveTodo}
+            onEdit={setTodoToEdit}
           />
         ))}
       </div>
     </section>
   </>
 )}
+{todoToEdit && (
+  <EditTaskModal
+    todo={todos.find((t) => t.id === todoToEdit)}
+    onClose={() => setTodoToEdit(null)}
+    onSave={editTodoHandler}
+  />
+)}
 
-    </div></>
+    </div>
+    </>
   )
 }
