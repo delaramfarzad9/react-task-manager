@@ -19,7 +19,7 @@ useEffect(() => {
   return (
       
             <div onClick={onClose} className=' fixed inset-0 z-50 backdrop-blur-sm flex items-center justify-center  '>
-           <div onClick={(e) => e.stopPropagation()} className=' relative flex flex-col gap-4 justify-center items-center bg-gray-100 pt-12 pb-6 px-6 rounded-xl shadow-xl border border-gray-300'>
+           <div onClick={(e) => e.stopPropagation()} className=' relative flex flex-col gap-4 justify-center items-center bg-gray-100 dark:bg-gray-200 pt-12 pb-6 px-6 rounded-xl shadow-xl border border-gray-300'>
             {/* close icon */}
 <button onClick={onClose} aria-label="Close modal"
  className="absolute top-2 left-2  text-rose-600 hover:text-rose-800">

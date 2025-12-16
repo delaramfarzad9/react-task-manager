@@ -17,11 +17,11 @@ function App() {
       <SvgSprite />
      
         {/* app title */}
-      <header className="relative bg-linear-to-b from-sky-200 to-blue-50 shadow-blue-50 p-6 text-center">
-        <h1 className="text-2xl md:text-3xl font-bold text-blue-800">
+      <header className="relative bg-linear-to-b from-sky-700 dark:to-blue-950 to-blue-50 shadow-blue-50 dark:shadow-blue-95/90 p-6 text-center">
+        <h1 className="text-2xl md:text-3xl font-bold text-blue-800 dark:text-blue-200">
           My Task Manager
         </h1>
-        <p className="text-gray-500 italic">Stay organized, stay creative</p>
+        <p className="text-gray-500 dark:text-gray-300 italic">Stay organized, stay creative</p>
         <DarkModeToggle className="absolute top-5 left-5"/>
       </header>
       {/* main content */}

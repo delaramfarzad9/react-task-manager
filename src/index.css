@@ -45,9 +45,12 @@
   --font-AlanSans:"AlanSans","sans-serif";
  --inset-shadow-md:   inset 0 0 20px rgba(0,0,0,0.6),  
   inset 0 0 40px rgba(255,255,255,0.2); 
- 
+ --inset-shadow-lm: inset 0 0 15px rgba(0,0,0,0.8),
+                   inset 0 0 30px rgba(255,255,255,0.3); 
 }
  
 body{
-  @apply  font-AlanSans font-medium bg-gray-100
+  @apply  font-AlanSans font-medium bg-gray-100 dark:bg-gray-800 
+          
+          transition-all duration-300 ;
 }
