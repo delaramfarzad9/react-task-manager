@@ -17,7 +17,7 @@ function App() {
       <SvgSprite />
      
         {/* app title */}
-      <header className="relative bg-linear-to-b from-sky-700 dark:to-blue-950 to-blue-50 shadow-blue-50 dark:shadow-blue-95/90 p-6 text-center">
+      <header className="relative bg-linear-to-b from-sky-700 dark:to-gray-800 to-blue-100   p-6 text-center">
         <h1 className="text-2xl md:text-3xl font-bold text-blue-800 dark:text-blue-200">
           My Task Manager
         </h1>
